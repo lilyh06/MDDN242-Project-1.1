@@ -34,9 +34,10 @@
 
 <header>
   <h1 class="main-title">LILY HAGEN</h1>
-  <h2 class="sub-title"> </h2>
+  <h2 class="sub-title"> My Portfolio</h2>
 </header>
 
+<div class="lower-background" id="work-section"></div>
 
   <nav aria-label="Primary">
     <ul>
@@ -97,10 +98,19 @@
 
 
 <script>
-  // Example functionality – change these to whatever you want
 document.getElementById('btn-one').addEventListener('click', function () {
-  window.location.href = "mywork.html";
+  const target = document.getElementById('work-section');
+  if (!target) return;
+
+  // Scroll to 1/3 down the background section
+  const oneThirdPoint = target.offsetTop + target.offsetHeight / 8; /*the hughee the number the less it will scroll*/
+
+  window.scrollTo({
+    top: oneThirdPoint,
+    behavior: 'smooth'
+  });
 });
+
 
   document.getElementById('btn-two').addEventListener('click', function () {
     alert('Button Two clicked!');

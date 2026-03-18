@@ -147,7 +147,7 @@ html, body {
   position: absolute;
   width: 900px;                 /* same as croc width */
   height: 500px;
-  right: -765px;                /* 85% hidden, 15% visible */
+  right: -800px;                /* 85% hidden, 15% visible */
   transition: right 0.8s ease-out;
 }
 
@@ -188,8 +188,8 @@ html, body {
   transform: none;
   left: 0;          /* anchor to LEFT */
   right: auto;      /* make sure it's not using right: 0 from anywhere */
-  width: 80px;      /* hover zone*/
-  height: 200px;     /* hover zone*/
+  width: 20px;      /* hover zone*/
+  height: 100px;     /* hover zone*/
   z-index: 99998;
   pointer-events:s auto;
 }
@@ -209,7 +209,7 @@ html, body {
   width: 600px;      /* same width as .croc */
   height: 90%;      /* fill the 500px panel height */
   object-fit: contain;
-  left: 0;           /* anchored to left inside its panel */
+  left: -125px;           /* anchored to left inside its panel */
   top: 0;
   pointer-events: none;
 }
@@ -239,7 +239,7 @@ header {
 
 
 .main-title {
-  font-family: "Barriecito", cursive;
+  font-family: "Paytone One", sans-serif;
   font-size: 4rem;
   color: var(--color-text);
   text-align: center;
@@ -255,55 +255,13 @@ header {
 }
 
 
-/* --- My Work Page Layout --- */
-.mywork-page .work-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding-top: 40px;
+.lower-background {
+  position: absolute;
+  top: 100vh; /* starts right after the header */
+  left: 0;
+  width: 100%;
+  height: 200vh; /* covers the remaining scroll area */
+  background: url("background2.png") no-repeat center top / cover;
+  z-index: -1; /* behind everything */
 }
 
-.mywork-page .work-title {
-  color: white;
-  font-size: 3rem;
-  font-weight: 700;
-  text-align: center;
-  padding: 20px;
-  margin-bottom: 40px;
-  border-radius: 8px;
-}
-
-.mywork-page .work-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  justify-items: center;
-}
-
-.mywork-page .work-box {
-  width: 400px;
-  height: 600px;
-  background: #9e1f63;;
-  border-radius: 0px; /*rounded part of square */
-}
-
-/* --- My Work Page Home Button --- */
-.mywork-page .home-button {
-  position: fixed;
-  left: 20px;
-  top: 40px;
-  background: #ffffff00;
-  color: #f15a2b;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.mywork-page .home-button:hover {
-  background: #ff4d4d00;
-  color: white;
-  transform: scale(1.1);
-}
