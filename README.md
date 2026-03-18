@@ -7,4 +7,5 @@ I started by getting the variables to be at the top of the css file so it was ea
 
 Prompting an A.I (co-pilot) to add 3 centered buttons using .png images of fish I had draw, as fish are something i often draw stylized in different ways.
 
-The colours are bold, so name is bold
+The colours are bold, so name is bold, why i did stuff and how i got there/made those choices
+how it reflects me and my work?
