@@ -10,4 +10,12 @@ document.getElementById('btn-one').addEventListener('click', function () {
   });
 });
 
+document.getElementById('btn-three').addEventListener('click', function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+
 

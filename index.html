@@ -95,7 +95,9 @@
     <div class="croc-buttons">
       <button class="main-button" id="btn-one">MY WORK</button>
       <button class="main-button" id="btn-two">TWO</button>
-      <button class="main-button" id="btn-three">THREE</button>
+      <button class="main-button" id="btn-three">HOME</button>
+
+
     </div>
 
   </div>
@@ -128,9 +130,13 @@ document.getElementById('btn-one').addEventListener('click', function () {
     alert('Button Two clicked!');
   });
 
-  document.getElementById('btn-three').addEventListener('click', function () {
-    alert('Button Three clicked!');
+document.getElementById('btn-three').addEventListener('click', function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
+});
+
 </script>
 
 <!DOCTYPE html>
