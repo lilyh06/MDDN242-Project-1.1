@@ -192,6 +192,9 @@ html, body {
   height: 100px;     /* hover zone*/
   z-index: 99998;
   pointer-events:s auto;
+   background: transparent !important;
+  border: none !important;
+  
 }
 
 /* Tail panel */
@@ -202,6 +205,7 @@ html, body {
   left: -270px;      /* shown part of tail 75%ish */
   right: auto;
   transition: left 0.8s ease-out;
+  overflow: hidden;
 }
 
 .croc-tail {
@@ -265,3 +269,42 @@ header {
   z-index: -1; /* behind everything */
 }
 
+/* Layout container on top of background2.png */
+.work-layout {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 225px; /* pushes layout down into the background image */
+  text-align: center;
+}
+
+/* Big red title box */
+.work-title-box {
+  width: 60%;
+  margin: 0 auto 40px auto;
+  background: #ffffff00;
+  color: white;
+  font-size: 3rem;
+  font-weight: 700;
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.work-row {
+  display: flex;
+  justify-content: space-between; /* spreads them out */
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px; /* optional: adds breathing room */
+}
+
+
+/* Individual picture placeholders */
+.work-box {
+  width: 220px;
+  height: 300px;
+  background: #ffffff00;
+  border-radius: 1px;
+}
