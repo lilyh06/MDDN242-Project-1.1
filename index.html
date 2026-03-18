@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+
+  <meta name="description" content="A short description of your page goes here.">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Paytone+One&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<header>
+  <h1 class="main-title">LILY HAGEN</h1>
+  <h2 class="sub-title"> </h2>
+</header>
+
+
+  <nav aria-label="Primary">
+    <ul>
+
+    </ul>
+  </nav>
+
+  <main id="main-content">
+    <div class="underline" aria-hidden="true"></div>
+    <p></p>
+
+
+  <footer>
+    <small>&copy; <span id="year"></span> Lily Hagen</small>
+  </footer>
+
+  <script>
+    // Auto-update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Make all buttons show "hello "
+    document.querySelectorAll(".main-button").forEach(button => {
+      button.addEventListener("click", () => {
+        alert("hello");
+      });
+    });
+  </script>
+
+  <script src="script.js"></script>
+
+ <img src="bubble.png" class="float-image" style="top: 10%; animation-delay: 0s;">
+<img src="bubble.png" class="float-image" style="top: 30%; width: 20px; animation-delay: 4s;">
+<img src="bubble.png" class="float-image" style="top: 70%; width: 50px; animation-delay: 1.5s;">
+
+
+
+<!-- Main croc on the RIGHT -->
+<div class="croc-wrapper">
+  <div class="croc-panel">
+    <img src="crocodile.png" class="croc">
+
+    <!-- ⭐ Buttons MUST be inside the croc-panel ⭐ -->
+    <div class="croc-buttons">
+      <button class="main-button" id="btn-one">MY WORK</button>
+      <button class="main-button" id="btn-two">TWO</button>
+      <button class="main-button" id="btn-three">THREE</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Tail on the LEFT -->
+<div class="croc-tail-wrapper">
+  <div class="croc-tail-panel">
+    <img src="crocodiletail.png" class="croc-tail">
+  </div>
+</div>
+
+
+<script>
+  // Example functionality – change these to whatever you want
+document.getElementById('btn-one').addEventListener('click', function () {
+  window.location.href = "mywork.html";
+});
+
+  document.getElementById('btn-two').addEventListener('click', function () {
+    alert('Button Two clicked!');
+  });
+
+  document.getElementById('btn-three').addEventListener('click', function () {
+    alert('Button Three clicked!');
+  });
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Work</title>
+  <link rel="stylesheet" href="mywork.css">
+</head>
+
+<body>
+
+  <div class="work-container">
+
+    <div class="work-title">My Work</div>
+
+    <div class="work-grid">
+      <div class="work-box"></div>
+      <div class="work-box"></div>
+      <div class="work-box"></div>
+      <div class="work-box"></div>
+      <div class="work-box"></div>
+    </div>
+
+  </div>
+
+</body>
+</html>
+
+
+
+
+</body>
+</html>
