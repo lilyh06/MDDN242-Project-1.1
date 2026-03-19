@@ -74,11 +74,11 @@ html, body {
   top: 10vh;
   left: 100vw;                 /* start just off the right edge */
   width: 60px;
-  pointer-events: none;
+  pointer-events: auto;
   z-index: 9999;
-
+cursor: url("orangefish.png") 16 16, auto;
   animation:
-    swim-horizontal 12s linear infinite,
+    swim-horizontal 15s linear infinite,
     swim-bob 3s ease-in-out infinite;
 }
 
@@ -127,6 +127,7 @@ html, body {
 /* Hover effect for buttons */
 .main-button:hover {
   filter: brightness(4.4);
+  cursor: url("orangefish2.png") 16 16, pointer;
 }
 
 

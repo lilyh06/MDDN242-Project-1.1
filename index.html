@@ -23,152 +23,149 @@
     }
   </style>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Paytone+One&display=swap" rel="stylesheet">
-
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Paytone+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <header>
+    <h1 class="main-title">LILY HAGEN</h1>
+    <h2 class="sub-title"> My Portfolio</h2>
+  </header>
 
-<header>
-  <h1 class="main-title">LILY HAGEN</h1>
-  <h2 class="sub-title"> My Portfolio</h2>
-</header>
+  <div class="lower-background" id="work-section">
+    <div class="work-layout">
+      <div class="work-title-box">My Work</div>
 
-<div class="lower-background" id="work-section">
-
-  <div class="work-layout">
-    <div class="work-title-box">My Work</div>
-
-    <div class="work-row">
-      <div class="work-box"></div>
-      <div class="work-box"></div>
-      <div class="work-box"></div>
+      <div class="work-row">
+        <div class="work-box"></div>
+        <div class="work-box"></div>
+        <div class="work-box"></div>
+      </div>
     </div>
   </div>
 
-</div>
-
   <nav aria-label="Primary">
-    <ul>
-
-    </ul>
+    <ul></ul>
   </nav>
 
   <main id="main-content">
     <div class="underline" aria-hidden="true"></div>
     <p></p>
-
+  </main>
 
   <footer>
     <small>&copy; <span id="year"></span> Lily Hagen</small>
   </footer>
 
+  <!-- BUBBLES -->
+  <img src="bubble.png" class="float-image" style="top: 10%; animation-delay: 0s;">
+  <img src="bubble.png" class="float-image" style="top: 30%; width: 20px; animation-delay: 4s;">
+  <img src="bubble.png" class="float-image" style="top: 70%; width: 50px; animation-delay: 1.5s;">
+
+  <!-- Main croc on the RIGHT -->
+  <div class="croc-wrapper">
+    <div class="croc-panel">
+      <img src="crocodile.png" class="croc">
+
+      <div class="croc-buttons">
+        <button class="main-button" id="btn-one">MY WORK</button>
+        <button class="main-button" id="btn-two">TWO</button>
+        <button class="main-button" id="btn-three">HOME</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tail on the LEFT -->
+  <div class="croc-tail-wrapper">
+    <div class="croc-tail-panel">
+      <img src="crocodiletail.png" class="croc-tail">
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
   <script>
     // Auto-update year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Make all buttons show "hello "
-    document.querySelectorAll(".main-button").forEach(button => {
-      button.addEventListener("click", () => {
-        alert("hello");
+    // Button behaviors
+    document.getElementById('btn-one').addEventListener('click', function () {
+      const target = document.getElementById('work-section');
+      if (!target) return;
+
+      const oneThirdPoint = target.offsetTop + target.offsetHeight / 8;
+      window.scrollTo({
+        top: oneThirdPoint,
+        behavior: 'smooth'
       });
     });
+
+    document.getElementById('btn-two').addEventListener('click', function () {
+      alert('Button Two clicked!');
+    });
+
+    document.getElementById('btn-three').addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // BUBBLE POP + RESPAWN
+    const MAX_BUBBLES = 5; // change to 3–5 as you like
+
+function spawnBubble() {
+  const bubble = document.createElement("img");
+  bubble.src = "bubble.png";
+  bubble.className = "float-image";
+
+  // random vertical position
+  bubble.style.top = Math.floor(Math.random() * 80 + 10) + "vh";
+
+  // random size
+  const size = Math.floor(Math.random() * 40 + 20);
+  bubble.style.width = size + "px";
+
+  // random animation delay
+  bubble.style.animationDelay = (Math.random() * 5) + "s";
+
+  document.body.appendChild(bubble);
+  enablePop(bubble);
+}
+
+function enablePop(bubble) {
+  bubble.addEventListener("mouseenter", () => {
+    // change image to pop.png
+    bubble.src = "pop.png";
+
+    // keep it visible for a moment so cursor doesn't flicker
+    setTimeout(() => {
+      bubble.style.transition = "opacity 0.15s ease-out";
+      bubble.style.opacity = "0";
+
+      setTimeout(() => {
+        bubble.remove();
+        maintainBubbleCount();
+      }, 150);
+
+    }, 50); // ← this tiny delay prevents cursor flicker
+  });
+}
+
+
+function maintainBubbleCount() {
+  const current = document.querySelectorAll(".float-image").length;
+  if (current < MAX_BUBBLES) {
+    spawnBubble();
+  }
+}
+
+// enable popping for existing bubbles
+document.querySelectorAll(".float-image").forEach(enablePop);
+
+// keep bubble count stable
+setInterval(maintainBubbleCount, 1000);
   </script>
-
-  <script src="script.js"></script>
-
- <img src="bubble.png" class="float-image" style="top: 10%; animation-delay: 0s;">
-<img src="bubble.png" class="float-image" style="top: 30%; width: 20px; animation-delay: 4s;">
-<img src="bubble.png" class="float-image" style="top: 70%; width: 50px; animation-delay: 1.5s;">
-
-
-
-<!-- Main croc on the RIGHT -->
-<div class="croc-wrapper">
-  <div class="croc-panel">
-    <img src="crocodile.png" class="croc">
-
-    <!-- ⭐ Buttons MUST be inside the croc-panel ⭐ -->
-    <div class="croc-buttons">
-      <button class="main-button" id="btn-one">MY WORK</button>
-      <button class="main-button" id="btn-two">TWO</button>
-      <button class="main-button" id="btn-three">HOME</button>
-
-
-    </div>
-
-  </div>
-</div>
-
-<!-- Tail on the LEFT -->
-<div class="croc-tail-wrapper">
-  <div class="croc-tail-panel">
-    <img src="crocodiletail.png" class="croc-tail">
-  </div>
-</div>
-
-
-<script>
-document.getElementById('btn-one').addEventListener('click', function () {
-  const target = document.getElementById('work-section');
-  if (!target) return;
-
-  // Scroll to 1/3 down the background section
-  const oneThirdPoint = target.offsetTop + target.offsetHeight / 8; /*the hughee the number the less it will scroll*/
-
-  window.scrollTo({
-    top: oneThirdPoint,
-    behavior: 'smooth'
-  });
-});
-
-
-  document.getElementById('btn-two').addEventListener('click', function () {
-    alert('Button Two clicked!');
-  });
-
-document.getElementById('btn-three').addEventListener('click', function () {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-});
-
-</script>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Work</title>
-  <link rel="stylesheet" href="mywork.css">
-</head>
-
-<body>
-
-  <div class="work-container">
-
-    <div class="work-title">My Work</div>
-
-    <div class="work-grid">
-      <div class="work-box"></div>
-      <div class="work-box"></div>
-      <div class="work-box"></div>
-      <div class="work-box"></div>
-      <div class="work-box"></div>
-    </div>
-
-  </div>
-
-</body>
-</html>
-
-
-
-
 </body>
 </html>
