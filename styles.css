@@ -368,6 +368,10 @@ header {
 
 /* Show ONLY on mobile */
 @media (max-width: 600px) {
+  body {
+    padding: 0 !important;
+  }
+
   .mobile-warning {
     display: flex;
   }
