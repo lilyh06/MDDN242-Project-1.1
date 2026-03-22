@@ -26,16 +26,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Paytone+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
+
+<div class="mobile-warning">
+  <img src="desktopuse.png" alt="Desktop Only" />
+</div>
+
+
   <header>
     <h1 class="main-title">LILY HAGEN</h1>
     <h2 class="sub-title"> My Portfolio</h2>
   </header>
 
   <div class="lower-background" id="work-section">
-  <div class="lower-background-2"></div>
+  <div class="lower-background-2" id="about-section"></div>
+
 
     <div class="work-layout">
       <div class="work-title-box">My Work</div>
@@ -69,11 +78,15 @@
   <!-- Main croc on the RIGHT -->
   <div class="croc-wrapper">
     <div class="croc-panel">
+   <div class="croc-hotspot">
+  <div class="croc-hotspot-hover"></div>
+</div>
+
       <img src="crocodile.png" class="croc">
 
       <div class="croc-buttons">
         <button class="main-button" id="btn-one">MY WORK</button>
-        <button class="main-button" id="btn-two">TWO</button>
+        <button class="main-button" id="btn-two">ABOUT ME</button>
         <button class="main-button" id="btn-three">HOME</button>
       </div>
     </div>
@@ -103,9 +116,24 @@
       });
     });
 
-    document.getElementById('btn-two').addEventListener('click', function () {
-      alert('Button Two clicked!');
-    });
+  document.getElementById('btn-two').addEventListener('click', function () {
+  const section = document.getElementById('about-section');
+  if (!section) return;
+
+  // Scroll to the center of background3.png
+  const centerPoint =
+    section.offsetTop +
+    section.offsetHeight * 1.20 -
+    window.innerHeight / 2;
+
+
+  window.scrollTo({
+    top: centerPoint,
+    behavior: 'smooth'
+  });
+});
+
+
 
     document.getElementById('btn-three').addEventListener('click', function () {
       window.scrollTo({

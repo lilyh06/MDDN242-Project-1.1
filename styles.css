@@ -4,7 +4,7 @@
   --color-text: #9e1f63;
 
   /* Typography */
-  --font-main: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+ --font-main: "Lexend Exa", sans-serif;
   --font-weight-strong: 500;
 
   /* Buttons */
@@ -16,9 +16,6 @@
   --button-hover-bg: #9e1f63;
   --button-hover-border: rgba(147, 112, 216, 0);
   --button-hover-text: #000000;
-
-  /* Decorative elements */
-  --color-underline: #d7d7f500;
 
   /* Focus outline */
   --focus-outline: currentColor;
@@ -140,7 +137,7 @@ cursor: url("orangefish.png") 16 16, auto;
   width: 200px;                 /* hover zone (for the snout) */
   height: 500px;
   z-index: 99999;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 /* Panel that slides (croc + buttons together) */
@@ -178,9 +175,35 @@ cursor: url("orangefish.png") 16 16, auto;
 
 
 /* Slide panel in on hover */
-.croc-wrapper:hover .croc-panel {
-  right: 0;                     /* right edge stays at screen edge */
+.croc-panel:hover {
+  right: 0;
 }
+
+.croc-hotspot {
+  position: fixed;
+  right: -100px;
+  top: 75px;        /* align with crocodile top */
+  width: 300px;
+  height: 220px;    /* covers snout + teeth */
+  z-index: 99998;
+  pointer-events: none;
+}
+
+.croc-hotspot-hover {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 300px;
+  height: 220px;    /* match height */
+  pointer-events: auto;
+}
+
+
+
+.croc-hotspot-hover:hover ~ .croc-wrapper .croc-panel {
+  right: 0;
+}
+
 
 /* LEFT crocodile tail slide-out container */
 .croc-tail-wrapper {
@@ -320,3 +343,37 @@ header {
   background: #ffffff00;
   border-radius: 1px;
 }
+
+
+
+/* Fullscreen mobile warning overlay */
+.mobile-warning {
+  display: none; /* hidden by default on desktop */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #FBB03B; /* your brand color */
+  z-index: 999999; /* above everything */
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-warning img {
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+}
+
+/* Show ONLY on mobile */
+@media (max-width: 600px) {
+  .mobile-warning {
+    display: flex;
+  }
+
+  body > *:not(.mobile-warning) {
+    display: none !important;
+  }
+}
+
