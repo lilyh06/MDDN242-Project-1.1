@@ -361,10 +361,12 @@ header {
 }
 
 .mobile-warning img {
-  width: 90%;
-  max-width: 500px;
+  width: 100%;
+  max-width: 400px;
   height: auto;
+  object-fit: contain;
 }
+
 
 /* Show ONLY on mobile */
 @media (max-width: 600px) {
