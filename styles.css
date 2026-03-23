@@ -176,8 +176,8 @@ cursor: url("orangefish.png") 16 16, auto;
   position: absolute;
   right: 0;
   top: 0;
-  width: 200px;
-  height: 150px;    /* match height */
+  width: 50px;
+  height: 50px;    /* match height */
   pointer-events: auto;
 }
 
@@ -192,8 +192,8 @@ cursor: url("orangefish.png") 16 16, auto;
   transform: none;
   left: 0px;          /* anchor to LEFT */
   right: auto;      /* make sure it's not using right: 0 from anywhere */
-  width: 2px;      /* hover zone*/
-  height: 60px;     /* hover zone*/
+  width: 1px;      /* hover zone*/
+  height: 20px;     /* hover zone*/
   z-index: 99998;
   pointer-events: auto;
    background: transparent !important;
