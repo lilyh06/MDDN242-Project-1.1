@@ -36,9 +36,8 @@ body {
 }
 
 html, body {
-  min-height: 300vh;   /* page is now 3× the screen height */
+  min-height: 350vh;   /* page is now 3× the screen height */
 }
-
 
 /* buttons */
 .main-button {
@@ -59,11 +58,7 @@ html, body {
   color: var(--button-text);
 
   cursor: url("orangefish.png") 16 16, pointer;
-
-
 }
-
-
 
 /* Floating + bobbing animation */
 .float-image {
@@ -102,7 +97,6 @@ cursor: url("orangefish.png") 16 16, auto;
   }
 }
 
-
 /* Sub-heading centered below main heading */
 .sub-title {
   text-align: center;
@@ -112,21 +106,11 @@ cursor: url("orangefish.png") 16 16, auto;
   margin-bottom: 20px;
 }
 
-
-/* Underline */
-.underline {
-  width: 200px;
-  height: 2px;
-  background: var(--color-underline);
-  margin-bottom: 50px;
-}
-
 /* Hover effect for buttons */
 .main-button:hover {
   filter: brightness(4.4);
   cursor: url("orangefish2.png") 16 16, pointer;
 }
-
 
 /* Crocodile Head slide-in container */
 .croc-wrapper {
@@ -173,7 +157,6 @@ cursor: url("orangefish.png") 16 16, auto;
   z-index: 1;
 }
 
-
 /* Slide panel in on hover */
 .croc-panel:hover {
   right: 0;
@@ -207,16 +190,15 @@ cursor: url("orangefish.png") 16 16, auto;
   position: fixed;
   top: 100px;
   transform: none;
-  left: 0;          /* anchor to LEFT */
+  left: 0px;          /* anchor to LEFT */
   right: auto;      /* make sure it's not using right: 0 from anywhere */
-  width: 20px;      /* hover zone*/
+  width: 5px;      /* hover zone*/
   height: 100px;     /* hover zone*/
   z-index: 99998;
   pointer-events: auto;
    background: transparent !important;
   border: none !important;
-  
-}
+  }
 
 /* Tail panel */
 .croc-tail-panel {
@@ -239,7 +221,6 @@ cursor: url("orangefish.png") 16 16, auto;
   pointer-events: none;
 }
 
-
 /* Hover tail → slide off to the left */
 .croc-tail-wrapper:hover .croc-tail-panel {
   left: -900px;      /* still fully hidden on hover */
@@ -249,7 +230,6 @@ cursor: url("orangefish.png") 16 16, auto;
 .croc-tail-wrapper:hover ~ .croc-wrapper .croc-panel {
   right: -900px;   /* fully off-screen to the right */
 }
-
 
 /* Hover main croc → also hide tail */
 .croc-wrapper:hover ~ .croc-tail-wrapper .croc-tail-panel {
@@ -271,13 +251,25 @@ cursor: url("orangefish.png") 16 16, auto;
   z-index: 1;
 }
 
+.work-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+   cursor: url("orangefish.png") 16 16, pointer;
+}
+.work-link:hover {
+  cursor: url("orangefish2.png") 16 16, pointer;
+}
 
+.work-content {
+  width: 70%;
+  margin: 0 auto;   /* centers the whole card */
+}
 
 header {
   position: relative;
   height: 100vh; /* makes the header fill the screen */
 }
-
 
 .main-title {
   font-family: "Paytone One", sans-serif;
@@ -294,7 +286,6 @@ header {
   padding: 0;
   letter-spacing: 2px;
 }
-
 
 .lower-background {
   position: absolute;
@@ -317,7 +308,6 @@ header {
   z-index: -1;
   pointer-events: auto;
 }
-
 
 /* Layout container on top of background2.png */
 .work-layout {
@@ -348,7 +338,6 @@ header {
   margin: 0 auto;
   padding: 0 40px; /* optional: adds breathing room */
 }
-
 
 /* Individual picture placeholders */
 .work-box {
@@ -388,7 +377,7 @@ header {
 
 /* Content box */
 .work-content {
-  width: 70%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -403,14 +392,15 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: url("orangefish.png") 16 16, pointer;
 }
 
 .work-image-box img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  cursor: url("orangefish.png") 16 16, pointer;
 }
-
 
 /* Red description box */
 .work-description-box {
@@ -425,15 +415,11 @@ header {
   line-height: 1.4;
 }
 
-
 /* Background layers must never block hover */
 .lower-background,
 .lower-background-2 {
   pointer-events: auto;
 }
-
-
-
 
 /* Fullscreen mobile warning overlay */
 .mobile-warning {
@@ -479,24 +465,49 @@ body.below-hero .croc-hotspot-hover:hover ~ .croc-overlay {
   pointer-events: auto;
 }
 
-
-
-
 /* Show ONLY on mobile */
 @media (max-width: 600px) {
   body {
     padding: 0 !important;
   }
-
   .mobile-warning {
     display: flex;
   }
-
   body > *:not(.mobile-warning) {
     display: none !important;
   }
-
- 
-
 }
+
+/* ABOUT ME — must be OUTSIDE the media query */
+.about-me-content {
+  position: absolute;
+  top: 270vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+  z-index: 10;
+}
+
+.about-title {
+  font-family: "Lexend Exa", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #FBB03B;
+  margin-bottom: 10px;
+}
+
+.about-blurb {
+  font-family: "Lexend Exa", sans-serif;
+  font-size: 0.9rem;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  line-height: 1.6;
+}
+
+
+
+
 

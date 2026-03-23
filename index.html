@@ -45,6 +45,16 @@
 <div class="lower-background" id="work-section"></div>
 <div class="lower-background-2" id="about-section"></div>
 
+<div class="about-me-content">
+  <h2 class="about-title">About Me</h2>
+  <p class="about-blurb">
+    My name is Lily Hagen, I am studying Design for Social Innovation at Victoria Univervity of Wellington. I like creating illustrations, and other stuff idk add more??? (also push this down if u dont add a contact bit)
+    
+    Email: hagenlily@myvuw.ac.nz
+</div>
+
+
+
 <!-- WORK SECTION CONTENT (NOT inside background layers) -->
 <div class="work-layout">
   <div class="work-title-box">My Work</div>
@@ -53,15 +63,19 @@
 
     <button class="work-arrow left-arrow">&#10094;</button>
 
-    <div class="work-content">
-      <div class="work-image-box">
-        <img id="work-image" src="workpreview1.png" alt="Work Image">
-      </div>
-
-      <div class="work-description-box">
-        <p id="work-description">Abstract Composition Project: Fluid Form 2025</p>
-      </div>
+<a href="work1.html" class="work-link">
+  <div class="work-content" id="work-card">
+    <div class="work-image-box">
+      <img id="work-image" src="workpreview1.png" alt="Work Image">
     </div>
+
+    <div class="work-description-box">
+      <p id="work-description">Abstract Composition Project: Fluid Form 2025</p>
+    </div>
+  </div>
+</a>
+
+
 
     <button class="work-arrow right-arrow">&#10095;</button>
 
@@ -134,22 +148,20 @@
       });
     });
 
-  document.getElementById('btn-two').addEventListener('click', function () {
+document.getElementById('btn-two').addEventListener('click', function () {
   const section = document.getElementById('about-section');
   if (!section) return;
 
-  // Scroll to the center of background3.png
-  const centerPoint =
-    section.offsetTop +
-    section.offsetHeight * 1.20 -
-    window.innerHeight / 2;
-
+  // Scroll to 1/3 down background3.png
+  const oneThirdPoint =
+    section.offsetTop + (section.offsetHeight / 5);
 
   window.scrollTo({
-    top: centerPoint,
+    top: oneThirdPoint,
     behavior: 'smooth'
   });
 });
+
 
 
 
@@ -219,24 +231,30 @@ setInterval(maintainBubbleCount, 1000);
 // WORK VIEWER DATA
 const workItems = [
   {
-    image: "work1.png",
-    description: "This is the description for work item 1."
+    image: "workpreview1.png",
+    description: "Abstract Composition Project: Fluid Form 2025",
+    page: "work1.html"
   },
   {
     image: "work2.png",
-    description: "This is the description for work item 2."
+    description: "Project 2 Title",
+    page: "project-2.html"
   },
   {
     image: "work3.png",
-    description: "This is the description for work item 3."
+    description: "Project 3 Title",
+    page: "project-3.html"
   }
 ];
+
 
 let currentWork = 0;
 
 function updateWorkViewer() {
-  document.getElementById("work-image").src = workItems[currentWork].image;
-  document.getElementById("work-description").textContent = workItems[currentWork].description;
+  const item = workItems[currentWork];
+
+  document.getElementById("work-image").src = item.image;
+  document.getElementById("work-description").textContent = item.description;
 }
 
 document.querySelector(".left-arrow").addEventListener("click", () => {
@@ -258,7 +276,6 @@ window.addEventListener('scroll', () => {
     document.body.classList.remove('below-hero');
   }
 });
-
 
 </script>
 
