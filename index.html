@@ -49,11 +49,16 @@
   <h2 class="about-title">About Me</h2>
   <p class="about-blurb">
     My name is Lily Hagen, I am studying Design for Social Innovation at Victoria Univervity of Wellington. I like creating illustrations, and other stuff idk add more??? (also push this down if u dont add a contact bit)
-    
-    Email: hagenlily@myvuw.ac.nz
+    </p>
 </div>
 
-
+<div class="contact-content">
+  <h2 class="contact-title">Contact</h2>
+  <p class="contact-blurb">
+    <!-- Add your contact info or message here -->
+    Email: hagenlily@myvuw.ac.nz
+  </p>
+</div>
 
 <!-- WORK SECTION CONTENT (NOT inside background layers) -->
 <div class="work-layout">
@@ -63,8 +68,8 @@
 
     <button class="work-arrow left-arrow">&#10094;</button>
 
-<a href="work1.html" class="work-link">
-  <div class="work-content" id="work-card">
+<div class="work-link" id="work-card">
+  <div class="work-content">
     <div class="work-image-box">
       <img id="work-image" src="workpreview1.png" alt="Work Image">
     </div>
@@ -73,7 +78,7 @@
       <p id="work-description">Abstract Composition Project: Fluid Form 2025</p>
     </div>
   </div>
-</a>
+</div>
 
 
 
@@ -141,7 +146,7 @@
       const target = document.getElementById('work-section');
       if (!target) return;
 
-      const oneThirdPoint = target.offsetTop + target.offsetHeight / 8;
+      const oneThirdPoint = target.offsetTop + target.offsetHeight / 6;
       window.scrollTo({
         top: oneThirdPoint,
         behavior: 'smooth'
@@ -154,7 +159,7 @@ document.getElementById('btn-two').addEventListener('click', function () {
 
   // Scroll to 1/3 down background3.png
   const oneThirdPoint =
-    section.offsetTop + (section.offsetHeight / 5);
+    section.offsetTop + (section.offsetHeight / 3.3);
 
   window.scrollTo({
     top: oneThirdPoint,
@@ -237,12 +242,12 @@ const workItems = [
   },
   {
     image: "work2.png",
-    description: "Project 2 Title",
-    page: "project-2.html"
+    description: "Personal Work",
+    page: "work2.html"
   },
   {
-    image: "work3.png",
-    description: "Project 3 Title",
+    image: "example.png",
+    description: "Other Work",
     page: "project-3.html"
   }
 ];
@@ -255,6 +260,7 @@ function updateWorkViewer() {
 
   document.getElementById("work-image").src = item.image;
   document.getElementById("work-description").textContent = item.description;
+    document.getElementById("work-link").href = item.page; 
 }
 
 document.querySelector(".left-arrow").addEventListener("click", () => {
@@ -276,6 +282,13 @@ window.addEventListener('scroll', () => {
     document.body.classList.remove('below-hero');
   }
 });
+
+
+document.getElementById("work-card").addEventListener("click", () => {
+  const item = workItems[currentWork];
+  window.location.href = item.page;
+});
+
 
 </script>
 

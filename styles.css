@@ -36,7 +36,7 @@ body {
 }
 
 html, body {
-  min-height: 350vh;   /* page is now 3× the screen height */
+  min-height: 380vh;   /* page is now 3× the screen height */
 }
 
 /* buttons */
@@ -166,7 +166,7 @@ cursor: url("orangefish.png") 16 16, auto;
   position: fixed;
   right: -100px;
   top: 75px;        /* align with crocodile top */
-  width: 300px;
+  width: 260px;
   height: 220px;    /* covers snout + teeth */
   pointer-events: auto;
   z-index: 99998;
@@ -176,8 +176,8 @@ cursor: url("orangefish.png") 16 16, auto;
   position: absolute;
   right: 0;
   top: 0;
-  width: 300px;
-  height: 220px;    /* match height */
+  width: 200px;
+  height: 150px;    /* match height */
   pointer-events: auto;
 }
 
@@ -192,8 +192,8 @@ cursor: url("orangefish.png") 16 16, auto;
   transform: none;
   left: 0px;          /* anchor to LEFT */
   right: auto;      /* make sure it's not using right: 0 from anywhere */
-  width: 5px;      /* hover zone*/
-  height: 100px;     /* hover zone*/
+  width: 2px;      /* hover zone*/
+  height: 60px;     /* hover zone*/
   z-index: 99998;
   pointer-events: auto;
    background: transparent !important;
@@ -336,7 +336,7 @@ header {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 40px; /* optional: adds breathing room */
+  padding: 0 30px; /* optional: adds breathing room */
 }
 
 /* Individual picture placeholders */
@@ -369,10 +369,12 @@ header {
   transition: transform 0.2s ease;
   user-select: none;
   margin-top: -70px; 
+  cursor: url("orangefish.png") 16 16, pointer;
 }
 
 .work-arrow:hover {
   transform: scale(1.2);
+  cursor: url("orangefish2.png") 16 16, pointer;
 }
 
 /* Content box */
@@ -387,7 +389,6 @@ header {
 .work-image-box {
   width: 100%;
   aspect-ratio: 16 / 9; /* or 4/3 */
-  background: #000000;
   border-radius: 0px;
   display: flex;
   justify-content: center;
@@ -407,7 +408,7 @@ header {
   width: 100%;
   background: #ffffff00;
   color: white;
-  padding: 25px;
+  padding: 5px;
   margin-top: 20px;
   border-radius: 12px;
   font-size: 0.9rem;
@@ -457,13 +458,11 @@ header {
   z-index: 99990;                /* just under the croc (which is 99999) */
 }
 
-/* When croc is hovered → fade in layer */
-body.below-hero .croc-wrapper:hover ~ .croc-overlay,
-body.below-hero .croc-hotspot:hover ~ .croc-overlay,
-body.below-hero .croc-hotspot-hover:hover ~ .croc-overlay {
+.croc-panel:hover ~ .croc-overlay {
   opacity: 1;
   pointer-events: auto;
 }
+
 
 /* Show ONLY on mobile */
 @media (max-width: 600px) {
@@ -507,6 +506,33 @@ body.below-hero .croc-hotspot-hover:hover ~ .croc-overlay {
   line-height: 1.6;
 }
 
+.contact-content {
+  position: absolute;
+  top: 330vh; /* adjust this to place it nicely under About Me */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+  z-index: 10;
+}
+
+.contact-title {
+  font-family: "Lexend Exa", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #FBB03B;
+  margin-bottom: 10px;
+}
+
+.contact-blurb {
+  font-family: "Lexend Exa", sans-serif;
+  font-size: 0.9rem;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  line-height: 1.6;
+}
 
 
 
