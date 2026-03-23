@@ -131,13 +131,13 @@ cursor: url("orangefish.png") 16 16, auto;
 /* Crocodile Head slide-in container */
 .croc-wrapper {
   position: fixed;
-  top: 75px;                     /* pixels down the screen */
+  top: 75px;
   transform: none;
   right: 0;
-  width: 200px;                 /* hover zone (for the snout) */
+  width: 200px;
   height: 500px;
   z-index: 99999;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 /* Panel that slides (croc + buttons together) */
@@ -185,8 +185,8 @@ cursor: url("orangefish.png") 16 16, auto;
   top: 75px;        /* align with crocodile top */
   width: 300px;
   height: 220px;    /* covers snout + teeth */
+  pointer-events: auto;
   z-index: 99998;
-  pointer-events: none;
 }
 
 .croc-hotspot-hover {
@@ -198,12 +198,9 @@ cursor: url("orangefish.png") 16 16, auto;
   pointer-events: auto;
 }
 
-
-
 .croc-hotspot-hover:hover ~ .croc-wrapper .croc-panel {
   right: 0;
 }
-
 
 /* LEFT crocodile tail slide-out container */
 .croc-tail-wrapper {
@@ -215,7 +212,7 @@ cursor: url("orangefish.png") 16 16, auto;
   width: 20px;      /* hover zone*/
   height: 100px;     /* hover zone*/
   z-index: 99998;
-  pointer-events:s auto;
+  pointer-events: auto;
    background: transparent !important;
   border: none !important;
   
@@ -259,6 +256,22 @@ cursor: url("orangefish.png") 16 16, auto;
   left: -900px;
 }
 
+/* Make sure crocodile hover zones are ALWAYS on top */
+.croc-wrapper,
+.croc-hotspot,
+.croc-hotspot-hover,
+.croc-tail-wrapper {
+  z-index: 999999 !important;
+  pointer-events: auto;
+}
+
+/* Keep the work viewer BELOW the croc */
+.work-viewer {
+  position: relative;
+  z-index: 1;
+}
+
+
 
 header {
   position: relative;
@@ -291,16 +304,18 @@ header {
   height: 200vh; /* covers the remaining scroll area */
   background: url("background2.png") no-repeat center top / cover;
   z-index: -1; /* behind everything */
+  pointer-events: auto;
 }
 
 .lower-background-2 {
   position: absolute;
-  top: 200vh; /* 100vh header + 200vh background2 */
+  top: 230vh; /* 100vh header + 200vh background2 */
   left: 0;
   width: 100%;
   height: 150vh; /* or whatever height you want */
   background: url("background3.png") no-repeat center top / cover;
   z-index: -1;
+  pointer-events: auto;
 }
 
 
@@ -314,15 +329,14 @@ header {
   text-align: center;
 }
 
-/* Big red title box */
+/* title box */
 .work-title-box {
   width: 60%;
   margin: 0 auto 40px auto;
-  background: #ffffff00;
   color: #FBB03B;
   font-size: 3rem;
   font-weight: 700;
-  padding: 70px;
+  padding: 1px;
   border-radius: 10px;
 }
 
@@ -343,6 +357,81 @@ header {
   background: #ffffff00;
   border-radius: 1px;
 }
+
+/* Center Work Viewer */
+.work-viewer {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+/* Arrows */
+.work-arrow {
+  background: none;
+  border: none;
+  font-size: 4rem;
+  color: #FBB03B;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  user-select: none;
+  margin-top: -70px; 
+}
+
+.work-arrow:hover {
+  transform: scale(1.2);
+}
+
+/* Content box */
+.work-content {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* image box */
+.work-image-box {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* or 4/3 */
+  background: #000000;
+  border-radius: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.work-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* Red description box */
+.work-description-box {
+  width: 100%;
+  background: #ffffff00;
+  color: white;
+  padding: 25px;
+  margin-top: 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+
+/* Background layers must never block hover */
+.lower-background,
+.lower-background-2 {
+  pointer-events: auto;
+}
+
 
 
 
@@ -367,6 +456,31 @@ header {
   object-fit: contain;
 }
 
+/* Layer image behind crocodile */
+.croc-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: url("layer.png") center center / cover no-repeat;
+  opacity: 0;
+  pointer-events: none;          /* don't block clicks when hidden */
+  transition: opacity 0.4s ease;
+  z-index: 99990;                /* just under the croc (which is 99999) */
+}
+
+/* When croc is hovered → fade in layer */
+body.below-hero .croc-wrapper:hover ~ .croc-overlay,
+body.below-hero .croc-hotspot:hover ~ .croc-overlay,
+body.below-hero .croc-hotspot-hover:hover ~ .croc-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
 
 /* Show ONLY on mobile */
 @media (max-width: 600px) {
@@ -381,5 +495,8 @@ header {
   body > *:not(.mobile-warning) {
     display: none !important;
   }
+
+ 
+
 }
 

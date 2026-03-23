@@ -36,72 +36,90 @@
   <img src="desktopuse2.png" alt="Desktop Only" />
 </div>
 
+<header>
+  <h1 class="main-title">LILY HAGEN</h1>
+  <h2 class="sub-title"> My Portfolio</h2>
+</header>
 
-  <header>
-    <h1 class="main-title">LILY HAGEN</h1>
-    <h2 class="sub-title"> My Portfolio</h2>
-  </header>
+<!-- BACKGROUND LAYERS -->
+<div class="lower-background" id="work-section"></div>
+<div class="lower-background-2" id="about-section"></div>
 
-  <div class="lower-background" id="work-section">
-  <div class="lower-background-2" id="about-section"></div>
+<!-- WORK SECTION CONTENT (NOT inside background layers) -->
+<div class="work-layout">
+  <div class="work-title-box">My Work</div>
 
+  <div class="work-viewer">
 
-    <div class="work-layout">
-      <div class="work-title-box">My Work</div>
+    <button class="work-arrow left-arrow">&#10094;</button>
 
-      <div class="work-row">
-        <div class="work-box"></div>
-        <div class="work-box"></div>
-        <div class="work-box"></div>
+    <div class="work-content">
+      <div class="work-image-box">
+        <img id="work-image" src="workpreview1.png" alt="Work Image">
+      </div>
+
+      <div class="work-description-box">
+        <p id="work-description">Abstract Composition Project: Fluid Form 2025</p>
       </div>
     </div>
+
+    <button class="work-arrow right-arrow">&#10095;</button>
+
   </div>
+</div>
 
-  <nav aria-label="Primary">
-    <ul></ul>
-  </nav>
+<nav aria-label="Primary">
+  <ul></ul>
+</nav>
 
-  <main id="main-content">
-    <div class="underline" aria-hidden="true"></div>
-    <p></p>
-  </main>
+<main id="main-content">
+  <div class="underline" aria-hidden="true"></div>
+  <p></p>
+</main>
 
-  <footer>
-    <small>&copy; <span id="year"></span> Lily Hagen</small>
-  </footer>
+<footer>
+  <small>&copy; <span id="year"></span> Lily Hagen</small>
+</footer>
 
-  <!-- BUBBLES -->
-  <img src="bubble.png" class="float-image" style="top: 10%; animation-delay: 0s;">
-  <img src="bubble.png" class="float-image" style="top: 30%; width: 20px; animation-delay: 4s;">
-  <img src="bubble.png" class="float-image" style="top: 70%; width: 50px; animation-delay: 1.5s;">
+<!-- FLOATING BUBBLES -->
+<img src="bubble.png" class="float-image" style="top: 10%; animation-delay: 0s;">
+<img src="bubble.png" class="float-image" style="top: 30%; width: 20px; animation-delay: 4s;">
+<img src="bubble.png" class="float-image" style="top: 70%; width: 50px; animation-delay: 1.5s;">
 
-  <!-- Main croc on the RIGHT -->
-  <div class="croc-wrapper">
-    <div class="croc-panel">
-   <div class="croc-hotspot">
+<!-- CROCODILE HOTSPOT (must be FIRST) -->
+<div class="croc-hotspot">
   <div class="croc-hotspot-hover"></div>
 </div>
 
-      <img src="crocodile.png" class="croc">
+<!-- CROCODILE HEAD -->
+<div class="croc-wrapper">
+  <div class="croc-panel">
 
-      <div class="croc-buttons">
-        <button class="main-button" id="btn-one">MY WORK</button>
-        <button class="main-button" id="btn-two">ABOUT ME</button>
-        <button class="main-button" id="btn-three">HOME</button>
-      </div>
+    <img src="crocodile.png" class="croc">
+
+    <div class="croc-buttons">
+      <button class="main-button" id="btn-one">MY WORK</button>
+      <button class="main-button" id="btn-two">ABOUT ME</button>
+      <button class="main-button" id="btn-three">HOME</button>
     </div>
-  </div>
 
-  <!-- Tail on the LEFT -->
-  <div class="croc-tail-wrapper">
-    <div class="croc-tail-panel">
-      <img src="crocodiletail.png" class="croc-tail">
-    </div>
   </div>
+</div>
 
-  <!-- SCRIPTS -->
-  <script>
-    // Auto-update year
+<!-- CROCODILE TAIL -->
+<div class="croc-tail-wrapper">
+  <div class="croc-tail-panel">
+    <img src="crocodiletail.png" class="croc-tail">
+  </div>
+</div>
+
+<!-- LAYER BEHIND CROCODILE -->
+<div class="croc-overlay"></div>
+
+
+<script>
+
+ // Auto-update year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Button behaviors
@@ -196,6 +214,53 @@ document.querySelectorAll(".float-image").forEach(enablePop);
 
 // keep bubble count stable
 setInterval(maintainBubbleCount, 1000);
-  </script>
+
+
+// WORK VIEWER DATA
+const workItems = [
+  {
+    image: "work1.png",
+    description: "This is the description for work item 1."
+  },
+  {
+    image: "work2.png",
+    description: "This is the description for work item 2."
+  },
+  {
+    image: "work3.png",
+    description: "This is the description for work item 3."
+  }
+];
+
+let currentWork = 0;
+
+function updateWorkViewer() {
+  document.getElementById("work-image").src = workItems[currentWork].image;
+  document.getElementById("work-description").textContent = workItems[currentWork].description;
+}
+
+document.querySelector(".left-arrow").addEventListener("click", () => {
+  currentWork = (currentWork - 1 + workItems.length) % workItems.length;
+  updateWorkViewer();
+});
+
+document.querySelector(".right-arrow").addEventListener("click", () => {
+  currentWork = (currentWork + 1) % workItems.length;
+  updateWorkViewer();
+});
+
+
+// Add a class to body when scrolled past the first screen
+window.addEventListener('scroll', () => {
+  if (window.scrollY > window.innerHeight * 0.8) {
+    document.body.classList.add('below-hero');
+  } else {
+    document.body.classList.remove('below-hero');
+  }
+});
+
+
+</script>
+
 </body>
 </html>
