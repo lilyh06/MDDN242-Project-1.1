@@ -315,14 +315,14 @@ header {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding-top: 225px; /* pushes layout down into the background image */
+  padding-top: 160px; /* pushes layout down into the background image */
   text-align: center;
 }
 
 /* title box */
 .work-title-box {
   width: 60%;
-  margin: 0 auto 40px auto;
+  margin: 0 auto 16px auto;
   color: #FBB03B;
   font-size: 3rem;
   font-weight: 700;
@@ -385,35 +385,56 @@ header {
   align-items: center;
 }
 
-/* image box */
+/* image box — fixed to work2.png dimensions so layout never shifts */
 .work-image-box {
-  width: 100%;
-  aspect-ratio: 16 / 9; /* or 4/3 */
+  width: 422px;
+  height: 429px;
   border-radius: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: url("orangefish.png") 16 16, pointer;
+  flex-shrink: 0;
 }
 
 .work-image-box img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   cursor: url("orangefish.png") 16 16, pointer;
 }
 
-/* Red description box */
 .work-description-box {
   width: 100%;
   background: #ffffff00;
-  color: white;
-  padding: 5px;
-  margin-top: 20px;
+  /* DEFAULT: dark so it's readable but looks unselected */
+  color: #680021;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   border-radius: 12px;
   font-size: 0.9rem;
   text-align: center;
   line-height: 1.4;
+  transition: color 0.25s ease;
+}
+
+.work-description-box p {
+  display: inline;
+  margin: 0;
+  text-decoration: underline;
+  text-decoration-color: #680021;
+  text-underline-offset: 1px;
+  transition: text-decoration-color 0.25s ease;
+}
+
+/* Hovering anywhere on the work card lightens the title to white */
+.work-link:hover .work-description-box {
+  color: #FBB03B;
+}
+
+.work-link:hover .work-description-box p {
+  text-decoration-color: #FBB03B;
 }
 
 /* Background layers must never block hover */
@@ -533,7 +554,3 @@ header {
   border-radius: 10px;
   line-height: 1.6;
 }
-
-
-
-

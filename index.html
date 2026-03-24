@@ -32,8 +32,9 @@
 
 <body>
 
+<!-- FIX: More descriptive alt text for mobile warning -->
 <div class="mobile-warning">
-  <img src="desktopuse2.png" alt="Desktop Only" />
+  <img src="desktopuse2.png" alt="This site is best viewed on desktop" />
 </div>
 
 <header>
@@ -48,8 +49,7 @@
 <div class="about-me-content">
   <h2 class="about-title">About Me</h2>
   <p class="about-blurb">
-    My name is Lily Hagen, I am studying Design for Social Innovation at Victoria Univervity of Wellington. I like creating illustrations, and other stuff idk add more??? (also push this down if u dont add a contact bit)
-    </p>
+    My name is Lily Hagen, I am studying Design for Social Innovation at Victoria Univervity of Wellington. I like creating illustrations, painting and graphic design.
 </div>
 
 <div class="contact-content">
@@ -66,23 +66,25 @@
 
   <div class="work-viewer">
 
-    <button class="work-arrow left-arrow">&#10094;</button>
+    <!-- FIX: aria-label added to arrow buttons -->
+    <button class="work-arrow left-arrow" aria-label="Previous work">&#10094;</button>
 
-<div class="work-link" id="work-card">
-  <div class="work-content">
-    <div class="work-image-box">
-      <img id="work-image" src="workpreview1.png" alt="Work Image">
-    </div>
+    <!-- FIX: Changed div to a proper <a> tag so it's announced as a link and is keyboard-focusable -->
+    <a class="work-link" id="work-card" href="work1.html">
+      <div class="work-content">
+        <div class="work-image-box">
+          <img id="work-image" src="workpreview1.png" alt="Work Image">
+        </div>
 
-    <div class="work-description-box">
-      <p id="work-description">Abstract Composition Project: Fluid Form 2025</p>
-    </div>
-  </div>
-</div>
+        <!-- FIX: aria-live="polite" so screen readers announce carousel changes -->
+        <div class="work-description-box" aria-live="polite">
+          <p id="work-description">Abstract Composition Project: Fluid Form 2025</p>
+        </div>
+      </div>
+    </a>
 
-
-
-    <button class="work-arrow right-arrow">&#10095;</button>
+    <!-- FIX: aria-label added to arrow buttons -->
+    <button class="work-arrow right-arrow" aria-label="Next work">&#10095;</button>
 
   </div>
 </div>
@@ -100,10 +102,10 @@
   <small>&copy; <span id="year"></span> Lily Hagen</small>
 </footer>
 
-<!-- FLOATING BUBBLES -->
-<img src="bubble.png" class="float-image" style="top: 10%; animation-delay: 0s;">
-<img src="bubble.png" class="float-image" style="top: 30%; width: 20px; animation-delay: 4s;">
-<img src="bubble.png" class="float-image" style="top: 70%; width: 50px; animation-delay: 1.5s;">
+<!-- FLOATING BUBBLES (decorative, alt="" set in JS too) -->
+<img src="bubble.png" class="float-image" alt="" style="top: 10%; animation-delay: 0s;">
+<img src="bubble.png" class="float-image" alt="" style="top: 30%; width: 20px; animation-delay: 4s;">
+<img src="bubble.png" class="float-image" alt="" style="top: 70%; width: 50px; animation-delay: 1.5s;">
 
 <!-- CROCODILE HOTSPOT (must be FIRST) -->
 <div class="croc-hotspot">
@@ -114,7 +116,7 @@
 <div class="croc-wrapper">
   <div class="croc-panel">
 
-    <img src="crocodile.png" class="croc">
+    <img src="crocodile.png" class="croc" alt="">
 
     <div class="croc-buttons">
       <button class="main-button" id="btn-one">MY WORK</button>
@@ -128,7 +130,7 @@
 <!-- CROCODILE TAIL -->
 <div class="croc-tail-wrapper">
   <div class="croc-tail-panel">
-    <img src="crocodiletail.png" class="croc-tail">
+    <img src="crocodiletail.png" class="croc-tail" alt="">
   </div>
 </div>
 
@@ -138,152 +140,142 @@
 
 <script>
 
- // Auto-update year
-    document.getElementById('year').textContent = new Date().getFullYear();
+  // Auto-update year
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Button behaviors
-    document.getElementById('btn-one').addEventListener('click', function () {
-      const target = document.getElementById('work-section');
-      if (!target) return;
+  // Button behaviors
+  document.getElementById('btn-one').addEventListener('click', function () {
+    const target = document.getElementById('work-section');
+    if (!target) return;
 
-      const oneThirdPoint = target.offsetTop + target.offsetHeight / 6;
-      window.scrollTo({
-        top: oneThirdPoint,
-        behavior: 'smooth'
-      });
+    const oneThirdPoint = target.offsetTop + target.offsetHeight / 6;
+    window.scrollTo({
+      top: oneThirdPoint,
+      behavior: 'smooth'
     });
-
-document.getElementById('btn-two').addEventListener('click', function () {
-  const section = document.getElementById('about-section');
-  if (!section) return;
-
-  // Scroll to 1/3 down background3.png
-  const oneThirdPoint =
-    section.offsetTop + (section.offsetHeight / 3.3);
-
-  window.scrollTo({
-    top: oneThirdPoint,
-    behavior: 'smooth'
   });
-});
 
+  document.getElementById('btn-two').addEventListener('click', function () {
+    const section = document.getElementById('about-section');
+    if (!section) return;
 
+    const oneThirdPoint =
+      section.offsetTop + (section.offsetHeight / 3.3);
 
-
-    document.getElementById('btn-three').addEventListener('click', function () {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+    window.scrollTo({
+      top: oneThirdPoint,
+      behavior: 'smooth'
     });
+  });
 
-    // BUBBLE POP + RESPAWN
-    const MAX_BUBBLES = 3; // Bubble amount on screen
+  document.getElementById('btn-three').addEventListener('click', function () {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 
-function spawnBubble() {
-  const bubble = document.createElement("img");
-  bubble.src = "bubble.png";
-  bubble.className = "float-image";
+  // BUBBLE POP + RESPAWN
+  const MAX_BUBBLES = 3;
 
-  // random vertical position
-  bubble.style.top = Math.floor(Math.random() * 80 + 10) + "vh";
+  function spawnBubble() {
+    const bubble = document.createElement("img");
+    bubble.src = "bubble.png";
+    bubble.className = "float-image";
+    // FIX: mark dynamically spawned bubbles as decorative
+    bubble.alt = "";
 
-  // random size
-  const size = Math.floor(Math.random() * 40 + 20);
-  bubble.style.width = size + "px";
+    bubble.style.top = Math.floor(Math.random() * 80 + 10) + "vh";
 
-  // random animation delay
-  bubble.style.animationDelay = (Math.random() * 5) + "s";
+    const size = Math.floor(Math.random() * 40 + 20);
+    bubble.style.width = size + "px";
 
-  document.body.appendChild(bubble);
-  enablePop(bubble);
-}
+    bubble.style.animationDelay = (Math.random() * 5) + "s";
 
-function enablePop(bubble) {
-  bubble.addEventListener("mouseenter", () => {
-    // change image to pop.png
-    bubble.src = "pop.png";
+    document.body.appendChild(bubble);
+    enablePop(bubble);
+  }
 
-    // keep it visible for a moment so cursor doesn't flicker
-    setTimeout(() => {
-      bubble.style.transition = "opacity 0.15s ease-out";
-      bubble.style.opacity = "0";
+  function enablePop(bubble) {
+    bubble.addEventListener("mouseenter", () => {
+      bubble.src = "pop.png";
 
       setTimeout(() => {
-        bubble.remove();
-        maintainBubbleCount();
-      }, 150);
+        bubble.style.transition = "opacity 0.15s ease-out";
+        bubble.style.opacity = "0";
 
-    }, 50); // ← this tiny delay prevents cursor flicker
+        setTimeout(() => {
+          bubble.remove();
+          maintainBubbleCount();
+        }, 150);
+
+      }, 50);
+    });
+  }
+
+  function maintainBubbleCount() {
+    const current = document.querySelectorAll(".float-image").length;
+    if (current < MAX_BUBBLES) {
+      spawnBubble();
+    }
+  }
+
+  document.querySelectorAll(".float-image").forEach(enablePop);
+
+  setInterval(maintainBubbleCount, 1000);
+
+
+  // WORK VIEWER DATA
+  const workItems = [
+    {
+      image: "workpreview1.png",
+      description: "Abstract Composition Project: Fluid Form 2025",
+      page: "work1.html"
+    },
+    {
+      image: "work2.png",
+      description: "Personal Work",
+      page: "work2.html"
+    }
+  ];
+
+  let currentWork = 0;
+
+  function updateWorkViewer() {
+    const item = workItems[currentWork];
+
+    document.getElementById("work-image").src = item.image;
+    document.getElementById("work-description").textContent = item.description;
+    // FIX: update the href on the <a> tag (now a real link element)
+    document.getElementById("work-card").href = item.page;
+  }
+
+  document.querySelector(".left-arrow").addEventListener("click", () => {
+    currentWork = (currentWork - 1 + workItems.length) % workItems.length;
+    updateWorkViewer();
   });
-}
 
+  document.querySelector(".right-arrow").addEventListener("click", () => {
+    currentWork = (currentWork + 1) % workItems.length;
+    updateWorkViewer();
+  });
 
-function maintainBubbleCount() {
-  const current = document.querySelectorAll(".float-image").length;
-  if (current < MAX_BUBBLES) {
-    spawnBubble();
-  }
-}
+  // Add a class to body when scrolled past the first screen
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > window.innerHeight * 0.8) {
+      document.body.classList.add('below-hero');
+    } else {
+      document.body.classList.remove('below-hero');
+    }
+  });
 
-// enable popping for existing bubbles
-document.querySelectorAll(".float-image").forEach(enablePop);
-
-// keep bubble count stable
-setInterval(maintainBubbleCount, 1000);
-
-
-// WORK VIEWER DATA
-const workItems = [
-  {
-    image: "workpreview1.png",
-    description: "Abstract Composition Project: Fluid Form 2025",
-    page: "work1.html"
-  },
-  {
-    image: "work2.png",
-    description: "Personal Work",
-    page: "work2.html"
-  }
-];
-
-
-let currentWork = 0;
-
-function updateWorkViewer() {
-  const item = workItems[currentWork];
-
-  document.getElementById("work-image").src = item.image;
-  document.getElementById("work-description").textContent = item.description;
-    document.getElementById("work-link").href = item.page; 
-}
-
-document.querySelector(".left-arrow").addEventListener("click", () => {
-  currentWork = (currentWork - 1 + workItems.length) % workItems.length;
-  updateWorkViewer();
-});
-
-document.querySelector(".right-arrow").addEventListener("click", () => {
-  currentWork = (currentWork + 1) % workItems.length;
-  updateWorkViewer();
-});
-
-
-// Add a class to body when scrolled past the first screen
-window.addEventListener('scroll', () => {
-  if (window.scrollY > window.innerHeight * 0.8) {
-    document.body.classList.add('below-hero');
-  } else {
-    document.body.classList.remove('below-hero');
-  }
-});
-
-
-document.getElementById("work-card").addEventListener("click", () => {
-  const item = workItems[currentWork];
-  window.location.href = item.page;
-});
-
+  // FIX: click handler still works since work-card is now an <a> tag,
+  // but we update href dynamically so native link behaviour handles navigation.
+  // The explicit click handler below is kept for any edge cases.
+  document.getElementById("work-card").addEventListener("click", () => {
+    const item = workItems[currentWork];
+    window.location.href = item.page;
+  });
 
 </script>
 
