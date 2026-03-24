@@ -32,7 +32,6 @@
 
 <body>
 
-<!-- FIX: More descriptive alt text for mobile warning -->
 <div class="mobile-warning">
   <img src="desktopuse2.png" alt="This site is best viewed on desktop" />
 </div>
@@ -55,8 +54,7 @@
 <div class="contact-content">
   <h2 class="contact-title">Contact</h2>
   <p class="contact-blurb">
-    <!-- Add your contact info or message here -->
-    Email: hagenlily@myvuw.ac.nz
+    Email: <a href="mailto:hagenlily@myvuw.ac.nz" style="color: white; text-underline-offset: 3px;">hagenlily@myvuw.ac.nz</a>
   </p>
 </div>
 
@@ -66,24 +64,20 @@
 
   <div class="work-viewer">
 
-    <!-- FIX: aria-label added to arrow buttons -->
     <button class="work-arrow left-arrow" aria-label="Previous work">&#10094;</button>
 
-    <!-- FIX: Changed div to a proper <a> tag so it's announced as a link and is keyboard-focusable -->
     <a class="work-link" id="work-card" href="work1.html">
       <div class="work-content">
         <div class="work-image-box">
-          <img id="work-image" src="workpreview1.png" alt="Work Image">
+          <img id="work-image" src="workpreview1.png" alt="Image of plastic, card and wire model">
         </div>
 
-        <!-- FIX: aria-live="polite" so screen readers announce carousel changes -->
         <div class="work-description-box" aria-live="polite">
           <p id="work-description">Abstract Composition Project: Fluid Form 2025</p>
         </div>
       </div>
     </a>
 
-    <!-- FIX: aria-label added to arrow buttons -->
     <button class="work-arrow right-arrow" aria-label="Next work">&#10095;</button>
 
   </div>
@@ -98,14 +92,10 @@
   <p></p>
 </main>
 
-<footer>
-  <small>&copy; <span id="year"></span> Lily Hagen</small>
-</footer>
-
-<!-- FLOATING BUBBLES (decorative, alt="" set in JS too) -->
-<img src="bubble.png" class="float-image" alt="" style="top: 10%; animation-delay: 0s;">
-<img src="bubble.png" class="float-image" alt="" style="top: 30%; width: 20px; animation-delay: 4s;">
-<img src="bubble.png" class="float-image" alt="" style="top: 70%; width: 50px; animation-delay: 1.5s;">
+<!-- FLOATING BUBBLES -->
+<img src="bubble.png" class="float-image" alt="Orange floating bubble" style="top: 10%; animation-delay: 0s;">
+<img src="bubble.png" class="float-image" alt="Orange floating bubble" style="top: 30%; width: 20px; animation-delay: 4s;">
+<img src="bubble.png" class="float-image" alt="Orange floating bubble" style="top: 70%; width: 50px; animation-delay: 1.5s;">
 
 <!-- CROCODILE HOTSPOT (must be FIRST) -->
 <div class="croc-hotspot">
@@ -116,12 +106,12 @@
 <div class="croc-wrapper">
   <div class="croc-panel">
 
-    <img src="crocodile.png" class="croc" alt="">
+    <img src="crocodile.png" class="croc" alt=" Purple 2D Crocodile">
 
     <div class="croc-buttons">
       <button class="main-button" id="btn-one">MY WORK</button>
       <button class="main-button" id="btn-two">ABOUT ME</button>
-      <button class="main-button" id="btn-three">HOME</button>
+      <button class="main-button" id="btn-three">SWIM BACK</button>
     </div>
 
   </div>
@@ -130,68 +120,62 @@
 <!-- CROCODILE TAIL -->
 <div class="croc-tail-wrapper">
   <div class="croc-tail-panel">
-    <img src="crocodiletail.png" class="croc-tail" alt="">
+    <img src="crocodiletail.png" class="croc-tail" alt="Purple Crocodile Tail">
   </div>
 </div>
 
 <!-- LAYER BEHIND CROCODILE -->
 <div class="croc-overlay"></div>
 
+<!-- FOOTER at the very bottom of the page -->
+<footer style="
+  position: absolute;
+  top: 380vh;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  font-family: 'Lexend Exa', sans-serif;
+  font-size: 0.8rem;
+  color: white;
+  box-sizing: border-box;
+">
+  <small>&copy; <span id="year"></span> Lily Hagen</small>
+</footer>
 
 <script>
 
-  // Auto-update year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Button behaviors
   document.getElementById('btn-one').addEventListener('click', function () {
     const target = document.getElementById('work-section');
     if (!target) return;
-
     const oneThirdPoint = target.offsetTop + target.offsetHeight / 6;
-    window.scrollTo({
-      top: oneThirdPoint,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: oneThirdPoint, behavior: 'smooth' });
   });
 
   document.getElementById('btn-two').addEventListener('click', function () {
     const section = document.getElementById('about-section');
     if (!section) return;
-
-    const oneThirdPoint =
-      section.offsetTop + (section.offsetHeight / 3.3);
-
-    window.scrollTo({
-      top: oneThirdPoint,
-      behavior: 'smooth'
-    });
+    const oneThirdPoint = section.offsetTop + (section.offsetHeight / 3.3);
+    window.scrollTo({ top: oneThirdPoint, behavior: 'smooth' });
   });
 
   document.getElementById('btn-three').addEventListener('click', function () {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // BUBBLE POP + RESPAWN
   const MAX_BUBBLES = 3;
 
   function spawnBubble() {
     const bubble = document.createElement("img");
     bubble.src = "bubble.png";
     bubble.className = "float-image";
-    // FIX: mark dynamically spawned bubbles as decorative
-    bubble.alt = "";
-
+    bubble.alt = "orange bubble, right to left";
     bubble.style.top = Math.floor(Math.random() * 80 + 10) + "vh";
-
     const size = Math.floor(Math.random() * 40 + 20);
     bubble.style.width = size + "px";
-
     bubble.style.animationDelay = (Math.random() * 5) + "s";
-
     document.body.appendChild(bubble);
     enablePop(bubble);
   }
@@ -199,54 +183,36 @@
   function enablePop(bubble) {
     bubble.addEventListener("mouseenter", () => {
       bubble.src = "pop.png";
-
       setTimeout(() => {
         bubble.style.transition = "opacity 0.15s ease-out";
         bubble.style.opacity = "0";
-
         setTimeout(() => {
           bubble.remove();
           maintainBubbleCount();
         }, 150);
-
       }, 50);
     });
   }
 
   function maintainBubbleCount() {
     const current = document.querySelectorAll(".float-image").length;
-    if (current < MAX_BUBBLES) {
-      spawnBubble();
-    }
+    if (current < MAX_BUBBLES) spawnBubble();
   }
 
   document.querySelectorAll(".float-image").forEach(enablePop);
-
   setInterval(maintainBubbleCount, 1000);
 
-
-  // WORK VIEWER DATA
   const workItems = [
-    {
-      image: "workpreview1.png",
-      description: "Abstract Composition Project: Fluid Form 2025",
-      page: "work1.html"
-    },
-    {
-      image: "work2.png",
-      description: "Personal Work",
-      page: "work2.html"
-    }
+    { image: "workpreview1.png", description: "Abstract Composition Project: Fluid Form 2025", page: "work1.html" },
+    { image: "work2.png", description: "My Personal Work (2025)", page: "work2.html" }
   ];
 
   let currentWork = 0;
 
   function updateWorkViewer() {
     const item = workItems[currentWork];
-
     document.getElementById("work-image").src = item.image;
     document.getElementById("work-description").textContent = item.description;
-    // FIX: update the href on the <a> tag (now a real link element)
     document.getElementById("work-card").href = item.page;
   }
 
@@ -260,7 +226,6 @@
     updateWorkViewer();
   });
 
-  // Add a class to body when scrolled past the first screen
   window.addEventListener('scroll', () => {
     if (window.scrollY > window.innerHeight * 0.8) {
       document.body.classList.add('below-hero');
@@ -269,9 +234,6 @@
     }
   });
 
-  // FIX: click handler still works since work-card is now an <a> tag,
-  // but we update href dynamically so native link behaviour handles navigation.
-  // The explicit click handler below is kept for any edge cases.
   document.getElementById("work-card").addEventListener("click", () => {
     const item = workItems[currentWork];
     window.location.href = item.page;
