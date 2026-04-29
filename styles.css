@@ -554,20 +554,19 @@ header {
   border-radius: 10px;
   line-height: 1.6;
 }
-
 /* Bottom‑right clickable web icon */
 .corner-web-link {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 999999; /* above croc + fish */
+  z-index: 999999;
   display: block;
 }
 
 .corner-web-icon {
   width: 70px;      /* adjust size here */
   height: auto;
-  opacity: 0.85;
+  opacity: 0.9;
   transition: opacity 0.2s ease, transform 0.2s ease;
   cursor: url("orangefish.png") 16 16, pointer;
 }
